@@ -96,9 +96,9 @@ passport.use(new GoogleStrategy({
     callbackURL: "https://forms-app-candy.herokuapp.com/dashboard"
   },
   function(accessToken, refreshToken, profile, cb) {
-    // console.log(profile);
+    console.log(profile);
 
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+    User.findOrCreate({ googleId: profile.id, name: profile.displayName }, function (err, user) {
       return cb(err, user);
     });
   }

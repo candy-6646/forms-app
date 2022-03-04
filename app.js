@@ -111,7 +111,7 @@ app.get('/auth/google/dashboard',
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect secrets page.
-    res.redirect('/dashboard/user/' + req.user._id);
+    res.redirect('/dashboard');
 });
 
 app.get("/",function(req, res) {

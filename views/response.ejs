@@ -1,0 +1,67 @@
+<%- include('partials/header') %>
+
+<div class="profile-container">
+    <i class="fas fa-user"></i>
+</div>
+
+<div class="profile-card profile-card-responses" style="display: none;">
+    <div class="profile-card-item">
+        <%=userName%>
+    </div>
+    <div class="profile-card-item profile-card-item2">
+        <a href="/dashboard"><div class="profile-card-item-btn">
+            Dashboard
+        </div></a>
+        <a href="/dashboard/forms/<%=form._id%>"><div class="profile-card-item-btn">
+            Form
+        </div></a>
+    </div>
+    <div class="profile-card-item profile-card-item2">
+        <a href="/dashboard/forms/<%=form._id%>/responses"><div class="profile-card-item-btn go-back-to-responses-page">
+            Go back to responses
+        </div></a>
+    </div>
+    <div class="profile-card-item profile-card-item2">
+        <a href="/logout"><div class="profile-card-item-btn">
+            Logout
+        </div></a>
+    </div>
+</div>
+
+    <div class="row form-container <%=form.color%>">
+        <div class="col-lg-8 col-sm-12">
+            <div class="form-resp-card <%=form.color%>-border">
+                <div class="form-resp-card-item form-resp-card-title">
+                    <%=form.title%>
+                </div>
+                <div class="form-resp-card-item form-resp-card-desc">
+                    <%=form.description%>
+                </div>
+            </div>
+
+            <div class="form-resp-card">
+                <div class="form-resp-card-item form-resp-card-question">Name</div>
+                <div class="form-resp-card-item form-resp-card-answer"><%=userResponse.ownerName%></div>
+            </div>
+
+
+            <div class="form-resp-card">
+                <div class="form-resp-card-item form-resp-card-question">Email</div>
+                <div class="form-resp-card-item form-resp-card-answer"><%=userResponse.ownerEmail%></div>
+            </div>
+
+            <%  userResponse.responseQuestions.forEach(function(response){ %>
+
+                <div class="form-resp-card" id="<%=response._id%>" >
+                    <div class="form-resp-card-item form-resp-card-question"><%=response.question%></div>
+                    <div class="form-resp-card-item form-resp-card-answer"><%=response.answer%></div>
+                </div>
+
+            <%  }) %>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="/scripts/response-script.js"></script>
+
+<%- include('partials/footer') %>

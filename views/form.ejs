@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=McLaren|Montserrat&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amaranth&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crete+Round&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Google icons -->
+  	<link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
+    
+    <title>Forms</title>
+  </head>
+  <body>
+
+    <div class="row form-container <%=form.color%>">
+        <div class="col-lg-8 col-sm-12">
+            <div class="form-resp-card <%=form.color%>-border">
+                <div class="form-resp-card-item form-resp-card-title">
+                    <%=form.title%>
+                </div>
+                <div class="form-resp-card-item form-resp-card-desc">
+                    <%=form.description%>
+                </div>
+            </div>
+
+            <form action="/<%=userId%>/<%=form._id%>" method="POST">
+            
+                <%  allQuestions.forEach(function(question){ %>
+
+                    <% if (question.type === "email") { %>
+                        <div class="form-resp-card" id="<%=question._id%>" >
+                            <div class="form-resp-card-item form-resp-card-question"><%=question.question%></div>
+                            <div class="form-resp-card-item form-resp-card-option">
+                                <input type="email" class="form-control" name="email" placeholder="Email" autocomplete="off" required>
+                            </div>
+                            <span class="required-ques-text-resp">*</span>
+                        </div>
+                    
+                    <% } else if (question.type === "name") { %>
+                        <div class="form-resp-card" id="<%=question._id%>" >
+                            <div class="form-resp-card-item form-resp-card-question"><%=question.question%></div>
+                            <div class="form-resp-card-item form-resp-card-option">
+                                <input type="text" class="form-control" name="name" placeholder="Name" autocomplete="off" required>
+                            </div>
+                            <span class="required-ques-text-resp">*</span>
+                        </div>
+                    <% } else if(question.type === "text") { %>
+                        <div class="form-resp-card" id="<%=question._id%>" >
+                            <div class="form-resp-card-item form-resp-card-question"><%=question.question%></div>
+                            <div class="form-resp-card-item form-resp-card-option">
+                                <textarea style="height: 70px;" type="text" class="form-control" name="<%=question.question%>" placeholder="Short answer text...."></textarea>
+                            </div>
+                        </div>
+                    <% } else { %>
+                        <div class="form-resp-card" id="<%=question._id%>" >
+                            <div class="form-resp-card-item form-resp-card-question"><%=question.question%></div>
+                            <div class="form-resp-card-item form-resp-card-option">
+                                <% for(let i = 0; i < question.options.length; i++) { %>
+                                    <div class="form-option-resp" id="form-option<%=i%>">
+                                        <span class="material-icons custom-checkbtn unchecked">radio_button_checked</span>
+                                        <div class="form-option-resp-question"><%=question.options[i]%></div>
+                                    </div>
+                                <% } %>
+                                <input class="user-selected-answer" name="<%=question.question%>" style="display: none;" />
+                            </div>
+                        </div>
+                    <% } %>
+
+                <%  }) %>
+                <button class="btn btn-lg <%=form.color%>-btn" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="/scripts/form-script.js"></script>
+
+<%- include('partials/footer') %>

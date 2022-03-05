@@ -4,18 +4,16 @@ for(let i = 0; i < allOptionsCont.length; i++) {
     allOptionsCont[i].addEventListener("click", function(e) {
         
         let optsContainer = e.currentTarget.parentElement.parentElement;
-        let allOptOfCurrent = optsContainer.querySelectorAll(".custom-checkbtn");
+        let allOptOfCurrent = optsContainer.querySelectorAll(".custom-checkbtn-form");
         for(let j = 0; j < allOptOfCurrent.length; j++) {
-            if(allOptOfCurrent[j].classList[2] === "checked") {
-                allOptOfCurrent[j].classList.remove("checked");
-                allOptOfCurrent[j].classList.add("unchecked");
+            if(allOptOfCurrent[j].innerText == "radio_button_checked") {
+                allOptOfCurrent[j].innerText = "radio_button_unchecked";
             }
         }
 
         let optParent = e.currentTarget.parentElement;
-        let currentCheckedBtn = optParent.querySelector(".custom-checkbtn");
-        currentCheckedBtn.classList.remove("unchecked");
-        currentCheckedBtn.classList.add("checked");
+        let currentCheckedBtn = optParent.querySelector(".custom-checkbtn-form");
+        currentCheckedBtn.innerText = "radio_button_checked";
 
         let optionText = allOptionsCont[i].innerText;
         optsContainer.querySelector(".user-selected-answer").value = optionText;

@@ -779,11 +779,7 @@ a {
   word-wrap: break-word;
 }
 
-.unchecked {
-  color: #444941;
-}
-
-.checked {
+.custom-checkbtn-form {
   color: #0d6efd;
 }
 
@@ -884,4 +880,8 @@ footer>a {
   margin-right: 7px;
   color: gray;
   text-decoration: underline;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

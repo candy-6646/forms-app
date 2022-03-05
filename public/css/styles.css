@@ -77,10 +77,15 @@ a {
 .create-account {
   display: flex;
   margin-top: 30px;
+  width: 100%;
 }
 
 .create-account > p {
   margin-right: 10px;
+}
+
+.create-account > a {
+  width: 60%;
 }
 
 .login-card-container {

@@ -56,6 +56,7 @@ a {
 }
 
 .box > h2 {
+    margin-top: 20px;
     font-size: 40px;
     font-weight: bold;
 }
@@ -384,8 +385,8 @@ a {
   align-items: center;
   border-radius: 50%;
   padding: 2px;
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
   margin: 5px;
   color: gray;
   font-size: 20px;

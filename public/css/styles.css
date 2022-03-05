@@ -56,13 +56,13 @@ a {
 }
 
 .box > h2 {
-    font-size: 50px;
+    font-size: 40px;
     font-weight: bold;
 }
 
 .box > p {
     letter-spacing: 1px;
-    font-size: 21px;
+    font-size: 20px;
     margin-top: 20px;
 }
 .fab {
@@ -85,7 +85,7 @@ a {
 }
 
 .create-account > a {
-  width: 60%;
+  width: 66%;
 }
 
 .login-card-container {

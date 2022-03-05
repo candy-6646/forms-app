@@ -369,6 +369,10 @@ a {
   align-items: center;
 }
 
+.create-page-container {
+  padding-bottom: 60px;
+}
+
 .form-manager .form-manager-item {
   display: flex;
   justify-content: center;

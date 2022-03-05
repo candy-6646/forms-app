@@ -471,7 +471,7 @@ app.post("/:userId/:formId", function(req, res) {
     let reqBody = req.body;
     let userName = req.body.name;
     let userEmail = req.body.email;
-    let resptime = new Date().toLocaleString();
+    let resptime = new Date().toLocaleString("en-Us", {timeZone: 'Asia/Kolkata'});
     delete reqBody.name;
     delete reqBody.email;
     let userRespQuesArr = [];

@@ -93,7 +93,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://forms-app-candy.herokuapp.com/auth/google/dashboard"
+    callbackURL: "https://data-collector-v6rn.onrender.com/auth/google/dashboard"
   },
   function(accessToken, refreshToken, profile, cb) {
     console.log(profile);

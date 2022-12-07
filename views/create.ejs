@@ -61,7 +61,7 @@
                         <div class="form-options">
                             <% for(let i = 0; i < question.options.length; i++) { %>
                                 <div class="form-option" id="form-option<%=i%>">
-                                    <span class="material-icons custom-radio-btn">radio_button_checked</span>
+                                    <span class="material-icons custom-radio-btn">radio_button_unchecked</span>
                                     <%=question.options[i]%>
                                     <input class="form-option-text" value="<%=question.options[i]%>" style="display: none;" />
                                 </div>
@@ -113,7 +113,7 @@
                         
                     </div>
                     <div class="new-question-content-mcq-item new-question-content-mcq-item-add-opt">
-                        <span class="material-icons custom-radio-btn">radio_button_checked</span>
+                        <span class="material-icons custom-radio-btn">radio_button_unchecked</span>
                         <span class="add-option-btn">add option</span>
                     </div>
                 </div>

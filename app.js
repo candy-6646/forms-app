@@ -93,7 +93,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://forms-app-candy.herokuapp.com/auth/google/dashboard"
+    callbackURL: "https://misty-cod-belt.cyclic.app/auth/google/dashboard"
   },
   function(accessToken, refreshToken, profile, cb) {
     console.log(profile);
@@ -471,7 +471,7 @@ app.post("/:userId/:formId", function(req, res) {
     let reqBody = req.body;
     let userName = req.body.name;
     let userEmail = req.body.email;
-    let resptime = new Date().toLocaleString();
+    let resptime = new Date().toLocaleString("en-Us", {timeZone: 'Asia/Kolkata'});
     delete reqBody.name;
     delete reqBody.email;
     let userRespQuesArr = [];

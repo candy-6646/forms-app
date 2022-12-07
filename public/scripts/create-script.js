@@ -40,7 +40,7 @@ addOptionBtn.addEventListener("click", function(e) {
     optNumber++;
     let div = document.createElement("div");
     div.classList.add("new-question-content-mcq-item");
-    div.innerHTML = `<span class="material-icons custom-radio-btn">radio_button_checked</span>
+    div.innerHTML = `<span class="material-icons custom-radio-btn">radio_button_unchecked</span>
     <input class="form-control" name="option-${nextOptionNumber}" placeholder="option ${nextOptionNumber}" type="text" required autocomplete="off" />
     <span class="material-icons custom-option-close-btn">close</span>`;
     newMcqQuesModalContent.append(div);
@@ -160,7 +160,7 @@ newMCQQuesManageBtn.addEventListener("click", function(e) {
     optNumber = 1;
     let div = document.createElement("div");
     div.classList.add("new-question-content-mcq-item");
-    div.innerHTML = `<span class="material-icons custom-radio-btn">radio_button_checked</span>
+    div.innerHTML = `<span class="material-icons custom-radio-btn">radio_button_unchecked</span>
     <input class="form-control" name="option-1" placeholder="option 1" type="text" required autocomplete="off"/>
     <span class="material-icons custom-option-close-btn">close</span>`;
     mcqOptionsContainer.append(div);

@@ -22,6 +22,22 @@
   <li>You can add mcq and short text questions.</li>
  </ul>
  
+ <h3>Get And Post Requests</h3>
+<ul>
+  <li><b>Get(/):</b> Rendering Home Page.</li>
+   <li><b>Get(/login):</b> Rendering Login Page.</li>
+   <li><b>Post(/login):</b> Validating user credentials to login in app.</li>
+   <li><b>Get(/register):</b> Rendering Register Page.</li>
+   <li><b>Post(/register):</b> Storing user data in DB and then redirecting him to dashboard.</li>
+   <li><b>Get(/auth/google):</b> Helping user to sign-up using google account.</li>
+   <li><b>Get(/logout):</b> Making user logout from web-app and redirecting to home.</li>
+   <li><b>Get(/dashboard):</b> Rendering dashboard Page to user and displaying his all forms.</li>
+   <li><b>Get(/dashboard/create):</b> This Get request creates a new form and redirects to create page.</li>
+   <li><b>Get(/:userId/:formId):</b> When user makes his form public for collecting data then this get request helper to render user form.</li>
+   <li><b>Post(/:userId/:formId):</b> It helps to collect response of any end user who is filling form, before saving responses it also validates wheater form is accepting responses or not.</li>
+   <li><b>Get(/dashboard/forms/:formId/responses):</b> It helps user to see received responses on their form.</li>
+   <li><b>Delete(/dashboard/:formId/deleteForm):</b> It helps user to delete a form using form Id.</li>
+ </ul>
  
  <h3>Screenshots</h3>
  <p align="center">

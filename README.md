@@ -39,15 +39,40 @@
    <li><b>Delete(/dashboard/:formId/deleteForm):</b> It helps user to delete a form using form Id.</li>
  </ul>
  
- <h3>Screenshots</h3>
- <p align="center">
-  <img src="/public/images/s1.png" width="700" title="Home Page" alt="Home Page">
-  <img src="/public/images/s2.png" width="700" title="Dashboard" alt="Dashboard">
-  <img src="/public/images/s3.png" width="700" title="Register" alt="Register">
-  <img src="/public/images/s4.png" width="700" title="Manage Form" alt="Manage Form">
-  <img src="/public/images/s5.png" width="700" title="Changing Theme" alt="Changing Theme">
-  <img src="/public/images/s6.png" width="700" title="Adding MCQ Question" alt="Adding MCQ Question">
-  <img src="/public/images/s7.png" width="700" title="Responses Dashboard" alt="Responses Dashboard">
-  <img src="/public/images/s8.png" width="700" title="Form" alt="Form">
-  <img src="/public/images/s9.png" width="700" title="Form-Off" alt="Form-Off">
- </p>
+ 
+ # Home Page
+
+![image](/public/images/s1.png)
+
+# Dashboard
+
+![image](/public/images/s2.png)
+
+# Register Page
+
+![image](/public/images/s3.png)
+
+# Manage Form Page
+
+![image](/public/images/s4.png)
+
+# Changing Theme
+
+![image](/public/images/s5.png)
+
+# Adding MCQ Question
+
+![image](/public/images/s6.png)
+
+# Viewing Form Responses
+
+![image](/public/images/s7.png)
+
+# Form
+
+![image](/public/images/s8.png)
+
+# Form-Off
+
+![image](/public/images/s9.png)
+ 

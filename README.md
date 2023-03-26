@@ -33,8 +33,8 @@
    <li><b>Get(/logout):</b> Making user logout from web-app and redirecting to home.</li>
    <li><b>Get(/dashboard):</b> Rendering dashboard Page to user and displaying his all forms.</li>
    <li><b>Get(/dashboard/create):</b> This Get request creates a new form and redirects to create page.</li>
-   <li><b>Get(/:userId/:formId):</b> When user makes his form public for collecting data then this get request helper to render user form.</li>
-   <li><b>Post(/:userId/:formId):</b> It helps to collect response of any end user who is filling form, before saving responses it also validates wheater form is accepting responses or not.</li>
+   <li><b>Get(/:userId/:formId):</b> When user makes his form public for collecting data then this get request helps to render form to any end user willing to fill form.</li>
+   <li><b>Post(/:userId/:formId):</b> It helps to collect response of any end user who submitted the form, before saving response it also validates whether form is accepting response or not, if accepts then it render Thanks page else No longer accepting responses page.</li>
    <li><b>Get(/dashboard/forms/:formId/responses):</b> It helps user to see received responses on their form.</li>
    <li><b>Delete(/dashboard/:formId/deleteForm):</b> It helps user to delete a form using form Id.</li>
  </ul>

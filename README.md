@@ -41,7 +41,7 @@
 
 ## II. Dashboard
  - On Dashboard You Can Create New Form or Open An Existing Form To Modify It
- <img src="../public/images/s2.png" width="400" />
+ <img src="./public/images/s2.png" width="400" />
 
 ## III. Manage Form
  - Here You Can Edit Title/Description, Click On Title And Start Typing, You Will See Save Changes Button
@@ -49,17 +49,24 @@
  - Add/Modify Questions
  - Delete Questions/Form
  - Navigate To Responses
- <img src="../public/images/s3.png" width="400" />
- <img src="../public/images/s4.png" width="400" />
- <img src="../public/images/s5.png" width="400" />
+ <img src="./public/images/s3.png" width="400" />
+ <img src="./public/images/s4.png" width="400" />
+ <img src="./public/images/s5.png" width="400" />
 
 
 ## IV. Make Form Live/Stop
  - Toogle The Button On Page To Make Your Form Live
  - Once You Make Your Form Live, You Will Get A URL That You Can Share With Anyone
  - Below Page You Can See Responses That You Got On Your Form
- <img src="../public/images/s6.png" width="400" />
+ <img src="./public/images/s6.png" width="400" />
  <img src="../public/images/s7.png" width="400" />
 
 # IV. Share The URL Of Form With Anyone To Fill And Submit It
- <img src="../public/images/s8.png" width="400" />
+ <img src="./public/images/s8.png" width="400" />
+
+
+
+Ask a question or give me a shout out:
+
+- 💌 https://kundan-6646.github.io/Portfolio/
+- 🐣 https://www.linkedin.com/in/kundan-kmr/

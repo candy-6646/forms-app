@@ -59,7 +59,7 @@
  - Once You Make Your Form Live, You Will Get A URL That You Can Share With Anyone
  - Below Page You Can See Responses That You Got On Your Form
  <img src="./public/images/s6.png" width="400" />
- <img src="../public/images/s7.png" width="400" />
+ <img src="./public/images/s7.png" width="400" />
 
 # IV. Share The URL Of Form With Anyone To Fill And Submit It
  <img src="./public/images/s8.png" width="400" />

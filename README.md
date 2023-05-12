@@ -4,7 +4,7 @@
 * <b>Nodejs</b> is used to develop backend of the website.
 * Added functionalities using <b>JS</b>.
 * <b>MongoDB</b> is used for data storage.
-* You can check it here: <a href="https://misty-cod-belt.cyclic.app/">Data Collector</a>.
+* You can check it here: <a href="https://alert-sparrow.cyclic.app/">Data Collector</a>.
 * <b>Currently Website is in Test Mode, you don't need to Login to test it.</b>
  
  

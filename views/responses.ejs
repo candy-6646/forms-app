@@ -46,7 +46,7 @@
                       </div>
                 </div>
                 <div class="form-header-item-link resp-header-link">
-                   <input class="form-control" type="text" id="form-link" value="https://misty-cod-belt.cyclic.app/<%=userId._id%>/<%=form._id%>" />
+                   <input class="form-control" type="text" id="form-link" value="https://misty-cod-belt.cyclic.app/<%=userId%>/<%=form._id%>" />
                    <div class="copy-link-btn" onclick="copyFunc()">copy</div>
                 </div>
             <% }else { %>
@@ -69,6 +69,16 @@
         </form>
 
         <div class="responses-container">
+            <div class="responses-manager">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="findByEmail" placeholder="Start Typing Name or Email" oninput="findResponse(this.value)">
+                </div>
+                <select class="form-select form-select-sm" id="sort-responses" onchange="sort(this.value)">
+                    <option selected value="none" disabled>Sort By</option>
+                    <option value="old">Oldest First</option>
+                    <option value="new">Newest First</option>
+                </select>
+            </div>
             <table class="table">
                 <thead>
                 <tr>
@@ -84,10 +94,12 @@
                 <% for(let i = 0; i < form.responses.length; i++) { %>
                     <tr>
                         <th scope="row"><%=i+1%></th>
-                        <td><%=form.responses[i].ownerName%></td>
-                        <td><%=form.responses[i].ownerEmail%></td>
+                        <td class="t-name"><%=form.responses[i].ownerName%></td>
+                        <td class="t-email">
+                            <a href="mailto:<%=form.responses[i].ownerEmail%>"><%=form.responses[i].ownerEmail%></a>
+                        </td>
                         <td><%=form.responses[i].time%></td>
-                        <td><a href="/dashboard/forms/<%=form._id%>/responses/<%=form.responses[i]._id%>">View</a></td>
+                        <td><a href="/dashboard/forms/<%=form._id%>/responses/<%=form.responses[i]._id%>" target="_blank">View &nbsp;<i class="fas fa-external-link-alt"></i></a></td>
                         <td class="delete-resp-btn"><a href="/dashboard/forms/<%=form._id%>/responses/<%=form.responses[i]._id%>/delete"><i class="fas fa-trash"></i></a></td>
                     </tr>
                 <% } %>
@@ -101,5 +113,7 @@
 
 
 <script type="text/javascript" src="/scripts/responses-script.js"></script>
+
+<%- include('partials/helpModal') %>
 
 <%- include('partials/footer') %>

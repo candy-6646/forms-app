@@ -89,6 +89,10 @@ passport.deserializeUser(function(id, done) {
 });
 
 
+const userId = '623da4243c4ca1308c5e7def';
+const userName = 'Test';
+
+
 //google strategy
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
@@ -133,54 +137,49 @@ app.get("/register", function(req, res) {
 
 
 app.get("/dashboard", function(req, res) {
-    if(req.isAuthenticated()) {
-        User.findOne({_id: req.user._id}, function(err, foundUser){
-            if(!err) {
-                res.render("dashboard", {allForms: foundUser.forms, userName: foundUser.name});
-            }else {
-                console.log(err);
-            }
-        });
-    }else{
-        res.redirect("/login");
-    }   
+    // if(!req.isAuthenticated()) res.redirect("/login");
+
+    User.findOne({_id: userId}, function(err, foundUser){
+        if(!err) {
+            res.render("dashboard", {allForms: foundUser.forms, userName: foundUser.name});
+        }else {
+            console.log(err);
+        }
+    });
 });
 
 
 app.get("/dashboard/create", function(req, res) {
-    if(req.isAuthenticated()) {
-        const sampleQues1 = new Ques({
-            question: "Name",
-            type: "name"
-        });
-        const sampleQues2 = new Ques({
-            question: "Email",
-            type: "email"
-        });
+    // if(!req.isAuthenticated()) res.redirect("/login");
 
-        const newForm = new Form({
-            title: "Untitled Form",
-            description: "Form Description",
-            questions: [sampleQues1, sampleQues2],
-            public: "off",
-            color: "form-white"
-        });
+    const sampleQues1 = new Ques({
+        question: "Name",
+        type: "name"
+    });
+    const sampleQues2 = new Ques({
+        question: "Email",
+        type: "email"
+    });
 
-        User.findOneAndUpdate({_id: req.user._id}, {$push: {forms: newForm}}, function(err, foundUser){
-            if (!err){
-                User.findOne({"_id": req.user._id},{forms: {$elemMatch: {_id: newForm._id}}}, function(err, foundForm){
-                    if (!err){
-                        res.render("create", {form: foundForm.forms[0], allQuestions: foundForm.forms[0].questions});
-                    }else {
-                        console.log(err);
-                    }
-                });
-            }
-        });
-        
-    }else{
-        res.redirect("/login");
-    }
+    const newForm = new Form({
+        title: "Untitled Form",
+        description: "Form Description",
+        questions: [sampleQues1, sampleQues2],
+        public: "off",
+        color: "form-white"
+    });
+
+    User.findOneAndUpdate({_id: userId}, {$push: {forms: newForm}}, function(err, foundUser){
+        if (!err){
+            User.findOne({"_id": userId},{forms: {$elemMatch: {_id: newForm._id}}}, function(err, foundForm){
+                if (!err){
+                    res.render("create", {form: foundForm.forms[0], allQuestions: foundForm.forms[0].questions});
+                }else {
+                    console.log(err);
+                }
+            });
+        }
+    });
 });
 
 
@@ -202,87 +201,79 @@ app.get("/:userId/:formId", function(req, res) {
 });
 
 app.get("/dashboard/forms/:formId", function(req, res) {
-    if(req.isAuthenticated()) {
-        User.findOne({"_id": req.user._id},{forms: {$elemMatch: {_id: req.params.formId}}}, function(err, foundForm){
-            if (!err){
-                res.render("create", {form: foundForm.forms[0], allQuestions: foundForm.forms[0].questions});
-            }else {
-                res.redirect("/dashboard");
-            }
-        });
-    }else {
-        res.redirect("/login");
-    }
+    // if(!req.isAuthenticated()) res.redirect("/login");
+
+    User.findOne({"_id": userId},{forms: {$elemMatch: {_id: req.params.formId}}}, function(err, foundForm){
+        if (!err){
+            res.render("create", {form: foundForm.forms[0], allQuestions: foundForm.forms[0].questions});
+        }else {
+            res.redirect("/dashboard");
+        }
+    });
     
 });
 
 
 app.get("/dashboard/forms/:formId/responses", function(req, res) {
-    if(req.isAuthenticated()) {
-        User.findOne({"_id": req.user._id},{forms: {$elemMatch: {_id: req.params.formId}}}, function(err, foundForm){
-            if (!err){
-                res.render("responses", {form: foundForm.forms[0], userName: req.user.name, userId: req.user._id});
-            }else {
-                res.redirect("/dashboard");
-            }
-        });
-    }else{
-        res.redirect("/login");
-    } 
+    // if(!req.isAuthenticated()) res.redirect("/login");
+
+    User.findOne({"_id": userId},{forms: {$elemMatch: {_id: req.params.formId}}}, function(err, foundForm){
+        if (!err){
+            res.render("responses", {form: foundForm.forms[0], userName: userName, userId: userId});
+        }else {
+            res.redirect("/dashboard");
+        }
+    });
 });
 
 
 
 app.get("/dashboard/forms/:formId/responses/:responseId", function(req, res) {
+    // if(!req.isAuthenticated()) res.redirect("/login");
+
     let responseId = req.params.responseId;
-    if(req.isAuthenticated()) {
-        User.findOne({"_id": req.user._id},{forms: {$elemMatch: {_id: req.params.formId}}}, function(err, foundForm){
-            if (!err){
-                let currentResponses = foundForm.forms[0].responses;
-                let userResponse;
-                currentResponses.forEach((element, index) => {
-                    if(element._id == responseId) {
-                        userResponse = currentResponses[index];
-                    }
-                });
-                res.render("response", {form: foundForm.forms[0], userName: req.user.name, userId: req.user._id, userResponse: userResponse});
-            }else {
-                res.redirect("/dashboard");
-            }
-        });
-    }else{
-        res.redirect("/login");
-    } 
+    User.findOne({"_id": userId},{forms: {$elemMatch: {_id: req.params.formId}}}, function(err, foundForm){
+        if (!err){
+            let currentResponses = foundForm.forms[0].responses;
+            let userResponse;
+            currentResponses.forEach((element, index) => {
+                if(element._id == responseId) {
+                    userResponse = currentResponses[index];
+                }
+            });
+            res.render("response", {form: foundForm.forms[0], userName: userName, userId: userId, userResponse: userResponse});
+        }else {
+            res.redirect("/dashboard");
+        }
+    });
 });
 
 
 app.get("/dashboard/forms/:formId/responses/:responseId/delete", function(req, res) {
-    let responseId = req.params.responseId;
-    if(req.isAuthenticated()) {
-        User.findOne({"_id": req.user._id},{forms: {$elemMatch: {_id: req.params.formId}}}, function(err, foundForm){
-            if (!err){
-                let currentResponses = foundForm.forms[0].responses;
-                let result = currentResponses.filter(obj => {
-                    return obj._id != responseId;
-                });
+    // if(!req.isAuthenticated()) res.redirect("/login");
 
-                foundForm.forms[0].responses = result;
-                foundForm.save();
-                res.redirect("/dashboard/forms/" + req.params.formId + "/responses");
-            }else {
-                res.redirect("/dashboard");
-            }
-        });
-    }else{
-        res.redirect("/login");
-    } 
+    let responseId = req.params.responseId;
+    User.findOne({"_id": userId},{forms: {$elemMatch: {_id: req.params.formId}}}, function(err, foundForm){
+        if (!err){
+            let currentResponses = foundForm.forms[0].responses;
+            let result = currentResponses.filter(obj => {
+                return obj._id != responseId;
+            });
+
+            foundForm.forms[0].responses = result;
+            foundForm.save();
+            res.redirect("/dashboard/forms/" + req.params.formId + "/responses");
+        }else {
+            res.redirect("/dashboard");
+        }
+    }); 
 });
 
 
 
 app.post("/:formId/titleSave", function(req, res) {
-    let userId = req.user._id;
     let formId = req.params.formId;
+    // let userId = req.user._id;
     User.updateOne(
         { _id: userId , "forms._id": formId},
         { $set:{ "forms.$.title": req.body.formTitle, "forms.$.description": req.body.formDesc} },
@@ -299,7 +290,7 @@ app.post("/:formId/titleSave", function(req, res) {
 
 
 app.post("/:formId/makePublic", function(req,res) {
-    let userId = req.user._id;
+    // let userId = req.user._id;
     let formId = req.params.formId;
     User.updateOne(
         { _id: userId , "forms._id": formId},
@@ -316,7 +307,7 @@ app.post("/:formId/makePublic", function(req,res) {
 });
 
 app.post("/dashboard/:formId/deleteForm", function(req, res) {
-    let userId = req.user._id;
+    // let userId = req.user._id;
     let formId = req.params.formId;
     let quesId = req.body.quesId;
 
@@ -349,7 +340,7 @@ app.post("/dashboard/:formId/deleteForm", function(req, res) {
 });
 
 app.post("/dashboard/:formId/add/textQuestion", function(req, res) {
-    let userId = req.user._id;
+    // let userId = req.user._id;
     let formId = req.params.formId;
     let quesId = req.body.quesId;
 
@@ -395,7 +386,7 @@ app.post("/dashboard/:formId/add/textQuestion", function(req, res) {
 });
 
 app.post("/dashboard/:formId/add/mcqQuestion", function(req,res) {
-    let userId = req.user._id;
+    // let userId = req.user._id;
     let formId = req.params.formId;
     let reqBody = req.body;
     let newQues = reqBody.newQuestion;
@@ -448,7 +439,7 @@ app.post("/dashboard/:formId/add/mcqQuestion", function(req,res) {
 
 
 app.post("/dashboard/:formId/changeColor", function(req, res) {
-    let userId = req.user._id;
+    // let userId = req.user._id;
     let formId = req.params.formId;
     User.updateOne(
         { _id: userId , "forms._id": formId},
@@ -466,7 +457,7 @@ app.post("/dashboard/:formId/changeColor", function(req, res) {
 
 
 app.post("/:userId/:formId", function(req, res) {
-    let userId = req.params.userId;
+    // let userId = req.params.userId;
     let formId = req.params.formId;
     let reqBody = req.body;
     let userName = req.body.name;

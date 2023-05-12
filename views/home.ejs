@@ -6,7 +6,7 @@
         <p>Easily create and share online forms and surveys, and analyze responses in real-time.</p>
         <div class="login-buttons">
             <a href="/auth/google">
-                <button type="button" class="btn btn-primary btn-lg">
+                <button type="button" class="btn btn-primary btn-lg" disabled>
                         <i class="fab fa-google"></i>
                         Sign In with Google
                 </button>
@@ -19,15 +19,17 @@
         </div>
         <div class="create-account">
             <p>Don't have an account?</p>
-            <a href="/register">Create an account</a>
+            <a href="/dashboard">Create an account</a>
         </div>   
     </div>
     <div class="col-lg-6 col-sm-12 box">
         <img src="images/analysis.png" class="img-fluid" alt="Responsive image" />
     </div>
     <footer id="footer" class="white-section">
-        © 2022 Copyright <a href="https://misty-cod-belt.cyclic.app/">Data Collector</a>
+        <i class="fas fa-info-circle"></i> &nbsp; Test Mode, Don't Need To Login
     </footer>
 </div>
+
+<%- include('partials/helpModal') %>
 
 <%- include('partials/footer') %>

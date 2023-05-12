@@ -41,3 +41,44 @@ function copyFunc() {
     document.querySelector(".copy-link-btn").innerText = "Copied!";
 	navigator.clipboard.writeText(text);
 }
+
+
+
+let oldestFirst = true;
+var tableBody = document.querySelector("tbody");
+
+function sort(selectedValue) {
+    if(selectedValue == 'old' && oldestFirst) return;
+
+    const responses = tableBody.querySelectorAll("tr");
+
+    var tbodyContent = []
+    tableBody.innerHTML = '';
+    responses.forEach( row => {
+        tbodyContent.push(row);
+    });
+
+    tbodyContent.reverse();
+    tbodyContent.forEach( row => {
+        tableBody.appendChild(row);
+    });
+
+    oldestFirst = false;
+}
+
+
+function findResponse(keyword) {
+    keyword = keyword.trim().toLowerCase();
+    const responses = tableBody.querySelectorAll("tr");
+    
+    responses.forEach(row => {
+        let name = row.querySelector(".t-name").innerText.trim().toLowerCase();
+        let email = row.querySelector(".t-email").innerText.trim().toLowerCase();
+        
+        if(name.includes(keyword) || email.includes(keyword)) {
+            row.style.display = 'table-row';
+        }else {
+            row.style.display = 'none'
+        }
+    });
+}

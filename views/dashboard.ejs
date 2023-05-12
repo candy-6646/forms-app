@@ -20,14 +20,14 @@
 </div>
 
 <div class="dash-container">
-    <a href="/dashboard/create">
+    <a href="/dashboard/create" target="_blank">
         <div class="form-card">
             <div class="form-card-text"><img src="/images/images.png" class="img-fluid" alt="add image" /></div>
         </div> 
     </a>
     
     <%  allForms.forEach(function(form){ %>
-        <a href="/dashboard/forms/<%=form._id%>">
+        <a href="/dashboard/forms/<%=form._id%>" target="_blank">
             <div class="form-card">
                 <div class="form-card-text"><%=form.title%></div>
                 <% if(form.public === "on") { %>
@@ -42,5 +42,7 @@
 
 
 <script type="text/javascript" src="/scripts/dash-script.js"></script>
+
+<%- include('partials/helpModal') %>
 
 <%- include('partials/footer') %>
